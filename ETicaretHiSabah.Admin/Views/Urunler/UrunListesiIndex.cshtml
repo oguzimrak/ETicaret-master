@@ -1,0 +1,62 @@
+﻿@using ETicaret.BLL;
+@{
+    ViewBag.Title = "UrunListesiIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    UrunlerManager urunman = new UrunlerManager();
+}
+
+<div class="content-wrapper">
+    <!--listeleme-->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Ürün Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="width: 10px">ID</th>
+                        <th style="width: 10px">KategoriID</th>
+                        <th style="width: 10px">MarkaID</th>
+                        <th>Ürün Adı</th>
+                        <th>Fiyatı</th>
+                        <th>Ölçü Tanımı</th>
+                        <th style="width: 10px">Stok</th>
+                        <th>Açıklama</th>
+                        <th style="width: 10px">PersonelID</th>
+                        <th style="width: 30px">Güncelle</th>
+                        <th style="width: 30px">Sil</th>
+                    </tr>
+                    @foreach (var item in urunman.UrunGetir())
+                    {
+                        <tr>
+                            <td>@item.UrunlerID</td>
+                            <td>@item.KategoriID</td>
+                            <td>@item.MarkaID</td>
+                            <td>@item.UrunAdi</td>
+                            <td>@item.UrunFiyat</td>
+                            <td>@item.UrunOlcuTanimi</td>
+                            <td>@item.UrunStok</td>
+                            <td>@item.UrunAciklama</td>
+                            <td>@item.PersonelID</td>
+                            <td><button class="btn btn-warning">Güncelle</button></td>
+                            <td><button class="btn btn-danger">Sil</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

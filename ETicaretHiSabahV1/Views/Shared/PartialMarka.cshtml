@@ -1,0 +1,24 @@
+﻿@using ETicaret.BLL
+
+@{
+    MarkaManager markaman = new MarkaManager();
+}
+
+<div class="community-poll">
+    <h4>Markalar</h4>
+    <div class="swit form">
+            @foreach (var item in markaman.MarkaGetir())
+            {
+                <div class="check_box">
+                    <div class="radio">
+                        <label>
+                            <input type="checkbox" name="radio" hidden="hidden">
+                            <i></i>@item.MarkaAdi
+                        </label>
+                    </div>
+                </div>
+            }
+            <!--<input type="submit" value="SEND">-->
+    </div>
+</div>
+

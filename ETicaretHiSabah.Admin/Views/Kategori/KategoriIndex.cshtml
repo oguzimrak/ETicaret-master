@@ -1,0 +1,96 @@
+﻿@using ETicaret.BLL;
+@{
+    ViewBag.Title = "KategoriIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    KategorilerManager katman = new KategorilerManager();
+}
+<div class="content-wrapper">
+    <!-- left column -->
+    <div class="col-md-12 col-lg-8 offset-lg-2">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">KATEGORİ EKLEME</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kategori Adı</label>
+                        <input type="text" name="kadi" class="form-control" id="exampleInputEmail1" placeholder="Kategori Adı" autocomplete="off" required>
+                        <!--required ==> gerekli anlamına gelir. Tagi doldurmadan işlem yapılmaz-->
+                        <!---autocomplete ==> önceki verileri otomatik vermesini engeller-->
+                    </div>
+
+                    <!--***********************************************************-->
+                    <!--***********************************************************-->
+                    <div class="form-group">
+                        <!--Dropdown parentID-->
+                        <label>Üst Kategori</label>
+                        <select class="form-control" name="PKatID" data-placeholder="Seçiniz.." >
+                            <option>Seçiniz..</option>
+                            @foreach (var item in ViewBag.UstKategori)
+                            {
+                                <option value="@item.KategorilerID">@item.KategoriAdi</option>
+                            }
+                        </select>
+                    </div>
+                    <!--***********************************************************-->
+                    <!--***********************************************************-->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">KATEGORİ EKLE</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!--listeleme-->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Kategori Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="width: 10px">ID</th>
+                        <th>Kategori Adı</th>
+                        <th style="width: 10px">ParentKategoriID</th>
+                        <th style="width: 10px">PersonelID</th>
+                        <th style="width: 40px">Güncelle</th>
+                        <th style="width: 40px">Sil</th>
+                    </tr>
+                    @foreach (var item in katman.KategoriGetir())
+                    {
+                    <tr>
+                        <td>@item.KategorilerID</td>
+                        <td>@item.KategoriAdi</td>
+                        <td>@item.ParentKategoriID</td>
+                        <td>@item.PersonelID</td>
+                        <td>@*<button class="btn btn-warning">Güncelle</button>*@
+                            @Html.ActionLink("GÜNCELLE", "KategoriGuncelle",new { Kategori_Id=item.KategorilerID })
+                        </td>
+                        <td><button class="btn btn-danger">Sil</button></td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,86 @@
+﻿@using ETicaret.BLL;
+@{
+    ViewBag.Title = "UrunIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    
+}
+
+<div class="content-wrapper">
+    <!-- left column -->
+    <div class="col-md-12 col-lg-8 offset-lg-2">
+        <!-- general form elements -->
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">ÜRÜN EKLEME</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="form-group">
+                        <!--Dropdown parentID-->
+                        <label>Kategori</label>
+                        <select class="form-control btn-outline-info" name="kategoriID" data-placeholder="Seçiniz..">
+                            <option>Seçiniz..</option>
+                            @foreach (var item in ViewBag.Kategori)
+                            {
+                                <option value="@item.KategorilerID">@item.KategoriAdi</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Marka</label>
+                        <select class="form-control btn-outline-info" name="markaId" data-placeholder="Seçiniz..">
+                            <option>Seçiniz..</option>
+                            @foreach (var item in ViewBag.MarkaCombobox)
+                            {
+                                <option value="@item.MarkalarID">@item.MarkaAdi</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ürün Adı</label>
+                        <input type="text" class="form-control btn-outline-info" name="urunAdi" id="exampleInputEmail1" placeholder="Ürün Adı" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ürün Fiyatı</label>
+                        <input type="text" class="form-control btn-outline-info" name="urunFiyati" id="exampleInputEmail1" placeholder="Ürün Fiyatı" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Beden/Ölçü</label>
+                        <select class="form-control btn-outline-info" name="urunOlcuTanimi" data-placeholder="Seçiniz..">
+                            <option>Seçiniz..</option>
+                            @foreach (var item in ViewBag.OlcuBirimCombobox)
+                            {
+                                <option value="@item.OlcuBirimiAdi">@item.OlcuBirimiAdi</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input type="text" class="form-control btn-outline-info" name="urunStok" id="exampleInputEmail1" placeholder="Stok Adedi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea class="form-control btn-outline-info" rows="3" name="urunAciklama" placeholder="Enter ..."></textarea>
+                    </div>
+                    @*<div class="input-group mb-3">
+                        <input type="text" class="form-control btn-outline-info" placeholder="Resim Seçiniz.." name="">
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-outline-info btn-flat">BROWSE</button>
+                            <button type="button" class="btn btn-outline-info btn-flat">YÜKLE</button>
+                        </span>
+                    </div>*@
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-info btn-lg col-md-8 offset-md-2">ÜRÜN EKLE</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+</div>
+
+

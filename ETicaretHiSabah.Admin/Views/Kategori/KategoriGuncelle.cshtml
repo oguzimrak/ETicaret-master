@@ -1,0 +1,76 @@
+﻿@model ETicaret.DLL.Kategoriler
+    @using ETicaret.BLL
+
+@{
+    ViewBag.Title = "KategoriGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    KategorilerManager kategoriman = new KategorilerManager();
+}
+
+<div class="content-wrapper">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Kategoriler</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.KategorilerID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KategoriAdi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParentKategoriID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.DropDownList("UstKategori", ViewData["UstKategori"] as IEnumerable<SelectListItem>, htmlAttributes: new { @class="form-control"})*@
+                    @*@Html.EditorFor(model => model.ParentKategoriID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ParentKategoriID, "", new { @class = "text-danger" })*@
+                    <select class="form-control" name="ParentKategoriID">
+
+                        @if (kategoriman.ParentKategoriGetir(Model.KategorilerID) != 0)
+                        {
+                            <option value="">@kategoriman.KategoriBul((int)Model.ParentKategoriID).KategoriAdi</option>
+                        }
+                        else
+                        {
+                            <option value="">Ana Kategori.. </option>
+                        }
+                        @foreach (var item in ViewBag.UstKategori)
+                        {
+                            <option value="@item.KategorilerID">@item.KategoriAdi</option>
+                        }
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PersonelID, "PersonelID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PersonelID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PersonelID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="GÜNCELLE" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        @Html.Raw(TempData["KategoriGuncelle"])
+    }
+
+    <div>
+        @Html.ActionLink("Kategori Listesine Git", "KategoriIndex")
+
+    </div>
+</div>

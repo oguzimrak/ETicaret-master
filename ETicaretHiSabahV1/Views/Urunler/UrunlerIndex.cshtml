@@ -1,0 +1,70 @@
+﻿@using ETicaret.BLL
+@using ETicaret.DLL
+@{
+    ViewBag.Title = "UrunlerIndex";
+    Layout = "~/Views/Shared/AnasayfaLayout.cshtml";
+    UrunlerManager urunman = new UrunlerManager();
+}
+<!-- /new_arrivals -->
+<div class="new_arrivals_agile_w3ls_info">
+    <div class="container-fluid">
+        <!--KATEGORİLER ALANI-->
+        <div class="col-md-3">
+            @Html.Partial("PartialKategori")
+            @Html.Partial("PartialMarka")
+        </div>
+        <!--KATEGORİLER ALANI END-->
+        <!--ÜRÜNLER ALANI START-->
+        <div class="col-md-9">
+            <h3 class="wthree_text_info"> <span>ÜRÜNLERİMİZ</span></h3>
+            <div id="horizontalTab">
+                @foreach (var item in urunman.UrunGetir())
+                {
+                    <div class="col-md-3 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="~/Template/images/b1.jpg" alt="" class="pro-image-front">
+                                <img src="~/Template/images/b1.jpg" alt="" class="pro-image-back">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="/Urunler/UrunDetay/@item.UrunlerID" class="link-product-add-cart">ÜRÜN DETAY</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+
+                            </div>
+                            <div class="item-info-product ">
+                                <h4><a href="/Urunler/UrunDetay/@item.UrunlerID">@item.UrunAdi</a></h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">@item.UrunFiyat.Value.ToString("c")</span>
+                                    <del>$69.71</del>
+                                </div>
+                                <h6><a href="single.html">@item.UrunAciklama</a></h6>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_name" value="@item.UrunAdi" />
+                                            <input type="hidden" name="amount" value="@item.UrunFiyat" />
+                                            <input type="hidden" name="discount_amount" value="0" />
+                                            <input type="hidden" name="currency_code" value="USD" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="SEPETE EKLE" class="button" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }                
+            </div>
+        </div>
+        <!--ÜRÜNLER ALANI END-->
+        
+    </div>
+</div>
+<!-- //new_arrivals -->

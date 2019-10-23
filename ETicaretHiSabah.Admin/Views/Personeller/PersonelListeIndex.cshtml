@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ETicaret.DLL.Personeller>
+@using ETicaret.BLL
+@{
+    ViewBag.Title = "PersonelListeIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    PersonelManager persMan = new PersonelManager();
+}
+
+
+<div class="container-fluid">
+    <div class="content-wrapper">
+
+        <p>
+            @Html.ActionLink("Personel Ekle", "PersonelEkleIndex", null, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Soyadi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EMail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cinsiyet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adres)
+                </th>
+
+                <th>
+                    @Html.DisplayName("İşlemler")
+                </th>
+            </tr>
+
+            @foreach (var item in persMan.PersonelGetir())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soyadi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cinsiyet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adres)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PersonellerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PersonellerID }) |
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.PersonellerID })*@
+                        <a href="#" class="btn persSil" data-xpersonelid="@item.PersonellerID">Sil</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/AdminTemp/dist/js/plugins/jquery/jquery.js"></script>
+
+    <script>
+        $(".persSil").click(function () {
+            var personelSil = confirm("Personel silmeyi onaylıyor musunuz?")
+            if (personelSil) {
+                //alert("silindi");
+                var gelenid = $(this).data("xpersonelid");
+                $.ajax({
+                    type: "POST",
+                    data: { personelID: gelenid },
+                    url: "/Personeller/PersonelSil/",
+                    success: function () {
+                        alert("Silindi");
+                        window.location.replace("/Personeller/PersonelListeIndex");
+                    },
+                    error: function () {
+                        alert("Başarısız");
+                    }
+                });
+            }
+            else {
+                alert("İptal edildi");
+            }
+        });
+    </script>
+}

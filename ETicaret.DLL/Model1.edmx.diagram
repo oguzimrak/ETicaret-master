@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5bfebfb896654a56915f7312f33e915e" Name="Diagram1" ZoomLevel="66">
+        <EntityTypeShape EntityType="ETicaretDBModel.Bankalar" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ETicaretDBModel.BegenilenUrunler" Width="1.5" PointX="9.75" PointY="28.25" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Duyurular" Width="1.5" PointX="7.5" PointY="28.125" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Faturalar" Width="1.5" PointX="10.5" PointY="17.375" />
+        <EntityTypeShape EntityType="ETicaretDBModel.indirimTurleri" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Kampanyalar" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="ETicaretDBModel.KargoFirmalari" Width="1.5" PointX="3.75" PointY="9.125" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Kargolar" Width="1.5" PointX="6" PointY="9" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Kategoriler" Width="1.5" PointX="5.25" PointY="23.375" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Markalar" Width="1.5" PointX="5.25" PointY="30.75" />
+        <EntityTypeShape EntityType="ETicaretDBModel.OlcuBirimleri" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Personeller" Width="1.5" PointX="3" PointY="16" />
+        <EntityTypeShape EntityType="ETicaretDBModel.PersonelRolleri" Width="1.5" PointX="0.75" PointY="17.875" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Reklamlar" Width="1.5" PointX="5.25" PointY="20" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Sepet" Width="1.5" PointX="10.5" PointY="31.25" />
+        <EntityTypeShape EntityType="ETicaretDBModel.SepetDetay" Width="1.5" PointX="12.75" PointY="28.125" />
+        <EntityTypeShape EntityType="ETicaretDBModel.SiparisDetaylari" Width="1.5" PointX="10.5" PointY="21" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Siparisler" Width="1.5" PointX="8.25" PointY="17" />
+        <EntityTypeShape EntityType="ETicaretDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ETicaretDBModel.UrunDuyurulari" Width="1.5" PointX="9.75" PointY="25.375" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Urunler" Width="1.5" PointX="7.5" PointY="22" />
+        <EntityTypeShape EntityType="ETicaretDBModel.UrunOzellikleri" Width="1.5" PointX="9.75" PointY="38.75" />
+        <EntityTypeShape EntityType="ETicaretDBModel.UrunResimleri" Width="1.5" PointX="12.75" PointY="20.25" />
+        <EntityTypeShape EntityType="ETicaretDBModel.UyeAdresleri" Width="1.5" PointX="8.25" PointY="13.375" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Uyeler" Width="1.5" PointX="6" PointY="3.125" />
+        <EntityTypeShape EntityType="ETicaretDBModel.Yorumlar" Width="1.5" PointX="12.75" PointY="23.75" />
+        <AssociationConnector Association="ETicaretDBModel.FK_BegenilenUrunler_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_BegenilenUrunler_Uyeler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_UrunDuyurulari_Duyurular" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Faturalar_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Faturalar_Siparisler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Faturalar_UyeAdresleri" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Faturalar_Uyeler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Kampanyalar_indirimTurleri" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Kampanyalar_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_SiparisDetaylari_Kampanyalar" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Kargolar_KargoFirmalari" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Siparisler_Kargolar1" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Urunler_Kategoriler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Markalar_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Urunler_Markalar" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Personeller_PersonelRolleri" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Reklamlar_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Siparisler_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Urunler_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_UrunResimleri_Personeller" />
+        <AssociationConnector Association="ETicaretDBModel.FK_SepetDetay_Sepet" />
+        <AssociationConnector Association="ETicaretDBModel.FK_SepetDetay_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_SiparisDetaylari_Siparisler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_SiparisDetaylari_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Siparisler_Uyeler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_UrunDuyurulari_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_UrunOzellikleri_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_UrunResimleri_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Yorumlar_Urunler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_UyeAdresleri_Uyeler" />
+        <AssociationConnector Association="ETicaretDBModel.FK_Yorumlar_Uyeler" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

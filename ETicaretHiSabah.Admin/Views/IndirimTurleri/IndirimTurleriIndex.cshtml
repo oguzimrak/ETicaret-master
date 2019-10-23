@@ -1,0 +1,77 @@
+﻿@using ETicaret.BLL;
+@{
+    ViewBag.Title = "IndirimTurleriIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    IndirimTurleriManager indirimturman = new IndirimTurleriManager();
+}
+
+<div class="content-wrapper">
+    <!-- left column -->
+    <div class="col-md-12 col-lg-8 offset-lg-2">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">İNDİRİM TÜRLERİ</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form role="form" action="/IndirimTurleri/IndirimTurleriIndex" method="post" enctype="multipart/form-data">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label>İNDİRİM TÜRÜ ADI</label>
+                        <input name="textindirimturuAdi" type="text" class="form-control" placeholder="İndirim türü giriniz">
+                    </div>
+                    <div class="form-group">
+                        <label>AÇIKLAMA</label>
+                        <input name="textindirimturuaciklama" type="text" class="form-control" placeholder="Açıklama giriniz">
+                    </div>
+                    <div class="label" style="width:40%;margin-left:30%;">
+                        <button class="btn btn-block btn-outline-success btn-flat">KAYDET</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">İndirim Türleri Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="width: 10px">ID</th>
+                        <th>İNDİRİM TÜRÜ ADI</th>
+                        <th>AÇIKLAMA</th>
+                        <th style="width: 40px">GÜNCELLE</th>
+                        <th style="width: 40px">SİL</th>
+                    </tr>
+                    @foreach (var item in indirimturman.IndirimTuruGetir())
+                    {
+                        <tr>
+                            <td>@item.indirimTurleriID</td>
+                            <td>@item.indirimTuruAdi</td>
+                            <td>@item.Aciklama</td>
+                            <td>@Html.ActionLink("GÜNCELLE", "IndirimTurleriGuncelle", new { IndirimTuru_Id = item.indirimTurleriID })</td>
+                            <td><button class="btn btn-danger">Sil</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,86 @@
+﻿@model ETicaret.DLL.Urunler
+
+@{
+    ViewBag.Title = "UrunDetayIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="col-md-8 offset-2">
+        <div>
+            <h4><span style="color:firebrick">@Model.UrunAdi</span>  adlı ürünün detayı</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.UrunAdi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UrunAdi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UrunFiyat)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UrunFiyat)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UrunOlcuTanimi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UrunOlcuTanimi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UrunStok)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UrunStok)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UrunAciklama)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UrunAciklama)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Markalar.MarkaAdi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Markalar.MarkaAdi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Personeller.Adi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Personeller.Adi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Kategoriler.KategoriAdi)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Ürün Resmi Ekle", "#", new { id = Model.UrunlerID }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Ürün listesine dön", "UrunListesiView")
+        </p>
+    </div>
+</div>

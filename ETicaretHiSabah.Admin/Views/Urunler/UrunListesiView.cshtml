@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ETicaret.DLL.Urunler>
+
+@{
+    ViewBag.Title = "UrunListesiView";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <p>
+        @Html.ActionLink("Ürün Ekle", "UrunIndex")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunFiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunOlcuTanimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunStok)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunAciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Markalar.MarkaAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personeller.Adi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrunAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrunFiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrunOlcuTanimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrunStok)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrunAciklama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Markalar.MarkaAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Personeller.Adi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategoriler.KategoriAdi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "UrunGuncelleIndex", new { UrunlerID = item.UrunlerID }) |
+                    @Html.ActionLink("Detay", "UrunDetayIndex", new { UrunDetay_ID = item.UrunlerID }) |
+                    @Html.ActionLink("Sil", "Delete", new { UrunlerID = item.UrunlerID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

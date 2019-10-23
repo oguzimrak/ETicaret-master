@@ -1,0 +1,73 @@
+﻿@using ETicaret.BLL;
+@{
+    ViewBag.Title = "MarkaIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    MarkaManager markman = new MarkaManager();
+}
+<div class="content-wrapper">
+    <!-- left column -->
+    <div class="col-md-12 col-lg-8 offset-lg-2">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">MARKALAR</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form role="form" action="/Markalar/MarkaIndex" method="post" enctype="multipart/form-data">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label>MARKA ADI</label>
+                        <input name="textmarkaAdi" type="text" class="form-control" placeholder="Marka Adı giriniz">
+                    </div>
+                    <div class="label" style="width:40%;margin-left:30%;">
+                        <button class="btn btn-block btn-outline-success btn-flat">KAYDET</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Markalar Listesi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="width: 10px">ID</th>
+                        <th>Marka Adı</th>
+                        <th style="width: 10px">PersonelID</th>
+                        <th style="width: 40px">Güncelle</th>
+                        <th style="width: 40px">Sil</th>
+                    </tr>
+                    @foreach (var item in markman.MarkaGetir())
+                    {
+                    <tr>
+                        <td>@item.MarkalarID</td>
+                        <td>@item.MarkaAdi</td>
+                        <td>@item.PersonelID</td>
+                        <td>@Html.ActionLink("GÜNCELLE", "MarkaGuncelle", new { Marka_Id = item.MarkalarID })</td>
+                        <td><button class="btn btn-danger">Sil</button></td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
